@@ -1,0 +1,9 @@
+{
+    "name": "@ns-tech/config-eslint",
+    "version": "1.1.0",
+    "main": "index.js",
+    "type": "commonjs",
+    "publishConfig": {
+        "access": "public"
+    }
+}

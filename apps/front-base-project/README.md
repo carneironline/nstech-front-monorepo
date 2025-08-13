@@ -1,69 +1,89 @@
-Welcome to your new TanStack app!
+# Front Base Project
 
-# Getting Started
+Bem-vindo ao seu novo app TanStack!
 
-To run this application:
+## 📋 Índice
+
+- [Primeiros Passos](#primeiros-passos)
+- [Build para Produção](#build-para-produção)
+- [Testes](#testes)
+- [Estilização](#estilização)
+- [Roteamento](#roteamento)
+  - [Adicionando uma Rota](#adicionando-uma-rota)
+  - [Adicionando Links](#adicionando-links)
+  - [Usando um Layout](#usando-um-layout)
+- [Busca de Dados](#busca-de-dados)
+  - [React-Query](#react-query)
+- [Gerenciamento de Estado](#gerenciamento-de-estado)
+- [Arquivos de Demo](#arquivos-de-demo)
+- [Saiba Mais](#saiba-mais)
+
+---
+
+## Primeiros Passos
+
+Para executar esta aplicação:
 
 ```bash
 npm install
 npm run start
 ```
 
-# Building For Production
+## Build para Produção
 
-To build this application for production:
+Para fazer o build desta aplicação para produção:
 
 ```bash
 npm run build
 ```
 
-## Testing
+## Testes
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+Este projeto usa [Vitest](https://vitest.dev/) para testes. Você pode executar os testes com:
 
 ```bash
 npm run test
 ```
 
-## Styling
+## Estilização
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+Este projeto usa [Tailwind CSS](https://tailwindcss.com/) para estilização.
 
-## Routing
+## Roteamento
 
-This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
+Este projeto usa [TanStack Router](https://tanstack.com/router). A configuração inicial é um roteador baseado em arquivos. Isso significa que as rotas são gerenciadas como arquivos em `src/routes`.
 
-### Adding A Route
+### Adicionando uma Rota
 
-To add a new route to your application just add another a new file in the `./src/routes` directory.
+Para adicionar uma nova rota à sua aplicação, apenas adicione um novo arquivo no diretório `./src/routes`.
 
-TanStack will automatically generate the content of the route file for you.
+O TanStack irá gerar automaticamente o conteúdo do arquivo de rota para você.
 
-Now that you have two routes you can use a `Link` component to navigate between them.
+Agora que você tem duas rotas, pode usar um componente `Link` para navegar entre elas.
 
-### Adding Links
+### Adicionando Links
 
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
+Para usar navegação SPA (Single Page Application), você precisará importar o componente `Link` de `@tanstack/react-router`.
 
 ```tsx
 import { Link } from '@tanstack/react-router'
 ```
 
-Then anywhere in your JSX you can use it like so:
+Então, em qualquer lugar do seu JSX, você pode usá-lo assim:
 
 ```tsx
-<Link to="/about">About</Link>
+<Link to='/about'>Sobre</Link>
 ```
 
-This will create a link that will navigate to the `/about` route.
+Isso criará um link que navegará para a rota `/about`.
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
+Mais informações sobre o componente `Link` podem ser encontradas na [documentação do Link](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
 
-### Using A Layout
+### Usando um Layout
 
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you use the `<Outlet />` component.
+Na configuração de Roteamento Baseado em Arquivos, o layout está localizado em `src/routes/__root.tsx`. Qualquer coisa que você adicionar à rota raiz aparecerá em todas as rotas. O conteúdo da rota aparecerá no JSX onde você usar o componente `<Outlet />`.
 
-Here is an example layout that includes a header:
+Aqui está um exemplo de layout que inclui um cabeçalho:
 
 ```tsx
 import { Outlet, createRootRoute } from '@tanstack/react-router'
@@ -72,69 +92,69 @@ import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { Link } from '@tanstack/react-router'
 
 export const Route = createRootRoute({
-    component: () => (
-        <>
-            <header>
-                <nav>
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
-                </nav>
-            </header>
-            <Outlet />
-            <TanStackRouterDevtools />
-        </>
-    ),
+  component: () => (
+    <>
+      <header>
+        <nav>
+          <Link to='/'>Início</Link>
+          <Link to='/about'>Sobre</Link>
+        </nav>
+      </header>
+      <Outlet />
+      <TanStackRouterDevtools />
+    </>
+  ),
 })
 ```
 
-The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
+O componente `<TanStackRouterDevtools />` não é obrigatório, então você pode removê-lo se não quiser em seu layout.
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+Mais informações sobre layouts podem ser encontradas na [documentação de Layouts](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
 
-## Data Fetching
+## Busca de Dados
 
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
+Existem várias maneiras de buscar dados em sua aplicação. Você pode usar TanStack Query para buscar dados de um servidor. Mas também pode usar a funcionalidade `loader` integrada ao TanStack Router para carregar os dados de uma rota antes dela ser renderizada.
 
-For example:
+Por exemplo:
 
 ```tsx
 const peopleRoute = createRoute({
-    getParentRoute: () => rootRoute,
-    path: '/people',
-    loader: async () => {
-        const response = await fetch('https://swapi.dev/api/people')
-        return response.json() as Promise<{
-            results: {
-                name: string
-            }[]
-        }>
-    },
-    component: () => {
-        const data = peopleRoute.useLoaderData()
-        return (
-            <ul>
-                {data.results.map((person) => (
-                    <li key={person.name}>{person.name}</li>
-                ))}
-            </ul>
-        )
-    },
+  getParentRoute: () => rootRoute,
+  path: '/people',
+  loader: async () => {
+    const response = await fetch('https://swapi.dev/api/people')
+    return response.json() as Promise<{
+      results: {
+        name: string
+      }[]
+    }>
+  },
+  component: () => {
+    const data = peopleRoute.useLoaderData()
+    return (
+      <ul>
+        {data.results.map(person => (
+          <li key={person.name}>{person.name}</li>
+        ))}
+      </ul>
+    )
+  },
 })
 ```
 
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
+Os loaders simplificam drasticamente sua lógica de busca de dados. Confira mais informações na [documentação de Loader](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
 
 ### React-Query
 
-React-Query is an excellent addition or alternative to route loading and integrating it into you application is a breeze.
+React-Query é uma excelente adição ou alternativa ao carregamento de rotas e integrá-lo à sua aplicação é muito fácil.
 
-First add your dependencies:
+Primeiro adicione suas dependências:
 
 ```bash
 npm install @tanstack/react-query @tanstack/react-query-devtools
 ```
 
-Next we'll need to create a query client and provider. We recommend putting those in `main.tsx`.
+Em seguida, precisaremos criar um query client e provider. Recomendamos colocá-los em `main.tsx`.
 
 ```tsx
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
@@ -146,33 +166,33 @@ const queryClient = new QueryClient()
 // ...
 
 if (!rootElement.innerHTML) {
-    const root = ReactDOM.createRoot(rootElement)
+  const root = ReactDOM.createRoot(rootElement)
 
-    root.render(
-        <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router} />
-        </QueryClientProvider>,
-    )
+  root.render(
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>,
+  )
 }
 ```
 
-You can also add TanStack Query Devtools to the root route (optional).
+Você também pode adicionar TanStack Query Devtools à rota raiz (opcional).
 
 ```tsx
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const rootRoute = createRootRoute({
-    component: () => (
-        <>
-            <Outlet />
-            <ReactQueryDevtools buttonPosition="top-right" />
-            <TanStackRouterDevtools />
-        </>
-    ),
+  component: () => (
+    <>
+      <Outlet />
+      <ReactQueryDevtools buttonPosition='top-right' />
+      <TanStackRouterDevtools />
+    </>
+  ),
 })
 ```
 
-Now you can use `useQuery` to fetch your data.
+Agora você pode usar `useQuery` para buscar seus dados.
 
 ```tsx
 import { useQuery } from '@tanstack/react-query'
@@ -180,42 +200,42 @@ import { useQuery } from '@tanstack/react-query'
 import './App.css'
 
 function App() {
-    const { data } = useQuery({
-        queryKey: ['people'],
-        queryFn: () =>
-            fetch('https://swapi.dev/api/people')
-                .then((res) => res.json())
-                .then((data) => data.results as { name: string }[]),
-        initialData: [],
-    })
+  const { data } = useQuery({
+    queryKey: ['people'],
+    queryFn: () =>
+      fetch('https://swapi.dev/api/people')
+        .then(res => res.json())
+        .then(data => data.results as { name: string }[]),
+    initialData: [],
+  })
 
-    return (
-        <div>
-            <ul>
-                {data.map((person) => (
-                    <li key={person.name}>{person.name}</li>
-                ))}
-            </ul>
-        </div>
-    )
+  return (
+    <div>
+      <ul>
+        {data.map(person => (
+          <li key={person.name}>{person.name}</li>
+        ))}
+      </ul>
+    </div>
+  )
 }
 
 export default App
 ```
 
-You can find out everything you need to know on how to use React-Query in the [React-Query documentation](https://tanstack.com/query/latest/docs/framework/react/overview).
+Você pode descobrir tudo o que precisa saber sobre como usar React-Query na [documentação do React-Query](https://tanstack.com/query/latest/docs/framework/react/overview).
 
-## State Management
+## Gerenciamento de Estado
 
-Another common requirement for React applications is state management. There are many options for state management in React. TanStack Store provides a great starting point for your project.
+Outro requisito comum para aplicações React é o gerenciamento de estado. Existem muitas opções para gerenciamento de estado no React. TanStack Store fornece um ótimo ponto de partida para seu projeto.
 
-First you need to add TanStack Store as a dependency:
+Primeiro você precisa adicionar TanStack Store como uma dependência:
 
 ```bash
 npm install @tanstack/store
 ```
 
-Now let's create a simple counter in the `src/App.tsx` file as a demonstration.
+Agora vamos criar um contador simples no arquivo `src/App.tsx` como demonstração.
 
 ```tsx
 import { useStore } from '@tanstack/react-store'
@@ -225,22 +245,20 @@ import './App.css'
 const countStore = new Store(0)
 
 function App() {
-    const count = useStore(countStore)
-    return (
-        <div>
-            <button onClick={() => countStore.setState((n) => n + 1)}>
-                Increment - {count}
-            </button>
-        </div>
-    )
+  const count = useStore(countStore)
+  return (
+    <div>
+      <button onClick={() => countStore.setState(n => n + 1)}>Incrementar - {count}</button>
+    </div>
+  )
 }
 
 export default App
 ```
 
-One of the many nice features of TanStack Store is the ability to derive state from other state. That derived state will update when the base state updates.
+Uma das muitas funcionalidades interessantes do TanStack Store é a capacidade de derivar estado de outro estado. Esse estado derivado será atualizado quando o estado base for atualizado.
 
-Let's check this out by doubling the count using derived state.
+Vamos verificar isso duplicando a contagem usando estado derivado.
 
 ```tsx
 import { useStore } from '@tanstack/react-store'
@@ -250,38 +268,36 @@ import './App.css'
 const countStore = new Store(0)
 
 const doubledStore = new Derived({
-    fn: () => countStore.state * 2,
-    deps: [countStore],
+  fn: () => countStore.state * 2,
+  deps: [countStore],
 })
 doubledStore.mount()
 
 function App() {
-    const count = useStore(countStore)
-    const doubledCount = useStore(doubledStore)
+  const count = useStore(countStore)
+  const doubledCount = useStore(doubledStore)
 
-    return (
-        <div>
-            <button onClick={() => countStore.setState((n) => n + 1)}>
-                Increment - {count}
-            </button>
-            <div>Doubled - {doubledCount}</div>
-        </div>
-    )
+  return (
+    <div>
+      <button onClick={() => countStore.setState(n => n + 1)}>Incrementar - {count}</button>
+      <div>Dobrado - {doubledCount}</div>
+    </div>
+  )
 }
 
 export default App
 ```
 
-We use the `Derived` class to create a new store that is derived from another store. The `Derived` class has a `mount` method that will start the derived store updating.
+Usamos a classe `Derived` para criar uma nova store que é derivada de outra store. A classe `Derived` tem um método `mount` que iniciará a atualização da store derivada.
 
-Once we've created the derived store we can use it in the `App` component just like we would any other store using the `useStore` hook.
+Uma vez que criamos a store derivada, podemos usá-la no componente `App` como faríamos com qualquer outra store usando o hook `useStore`.
 
-You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
+Você pode descobrir tudo o que precisa saber sobre como usar TanStack Store na [documentação do TanStack Store](https://tanstack.com/store/latest).
 
-# Demo files
+## Arquivos de Demo
 
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
+Arquivos com prefixo `demo` podem ser excluídos com segurança. Eles estão lá para fornecer um ponto de partida para você brincar com as funcionalidades que instalou.
 
-# Learn More
+## Saiba Mais
 
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+Você pode aprender mais sobre todas as ofertas do TanStack na [documentação do TanStack](https://tanstack.com).

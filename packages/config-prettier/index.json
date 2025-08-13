@@ -2,5 +2,21 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "all",
-    "tabWidth": 4
+    "tabWidth": 2,
+    "printWidth": 100,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "avoid",
+    "endOfLine": "lf",
+    "quoteProps": "as-needed",
+    "jsxSingleQuote": true,
+    "overrides": [
+        {
+            "files": "*.{ts,tsx}",
+            "options": {
+                "parser": "typescript"
+            }
+        }
+    ]
 }

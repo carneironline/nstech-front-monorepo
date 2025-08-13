@@ -8,7 +8,45 @@
 
 Este é um monorepo front-end desenvolvido para **criar e distribuir pacotes reutilizáveis** para aplicações React. O projeto utiliza **pnpm workspaces** para gerenciar múltiplos pacotes e aplicações em um único repositório, proporcionando um ambiente de desenvolvimento e teste integrado.
 
-## 🎯 Visão Geral
+## Índice
+
+-   [Visão Geral](#visão-geral)
+-   [Estrutura do Projeto](#estrutura-do-projeto)
+-   [Pacotes Disponíveis](#pacotes-disponíveis)
+    -   [Configurações Compartilhadas](#configurações-compartilhadas)
+    -   [Pacotes React](#pacotes-react)
+-   [Aplicação de Teste (front-base-project)](#aplicação-de-teste-front-base-project)
+    -   [Stack Tecnológica](#stack-tecnológica)
+    -   [Hooks Disponíveis (do pacote @ns-tech/react-base)](#hooks-disponíveis-do-pacote-ns-techreact-base)
+    -   [Exemplo de Uso Prático](#exemplo-de-uso-prático)
+-   [Tecnologias Utilizadas](#tecnologias-utilizadas)
+    -   [Gerenciamento](#gerenciamento)
+    -   [Desenvolvimento](#desenvolvimento)
+    -   [Testes](#testes)
+-   [Como Usar](#como-usar)
+    -   [Pré-requisitos](#pré-requisitos)
+    -   [Instalação](#instalação)
+    -   [Desenvolvimento](#desenvolvimento-1)
+    -   [Build e Teste](#build-e-teste)
+-   [Scripts Disponíveis](#scripts-disponíveis)
+    -   [Aplicação (front-base-project)](#aplicação-front-base-project)
+-   [Configuração dos Workspaces](#configuração-dos-workspaces)
+    -   [Links de Workspace](#links-de-workspace)
+-   [Publicação de Pacotes](#publicação-de-pacotes)
+    -   [Versionamento](#versionamento)
+-   [Fluxo de Trabalho](#fluxo-de-trabalho)
+    -   [1. Desenvolvimento](#1-desenvolvimento)
+    -   [2. Teste](#2-teste)
+    -   [3. Publicação](#3-publicação)
+-   [Contribuição](#contribuição)
+-   [Notas de Desenvolvimento](#notas-de-desenvolvimento)
+    -   [Boas Práticas](#boas-práticas)
+    -   [Atualizando Pacotes](#atualizando-pacotes)
+-   [Licença](#licença)
+
+---
+
+## Visão Geral
 
 O monorepo foi estruturado para:
 
@@ -18,7 +56,7 @@ O monorepo foi estruturado para:
 -   **Facilitar o desenvolvimento** com ferramentas modernas
 -   **Garantir qualidade** através de testes e validações automáticas
 
-## 🏗️ Estrutura do Projeto
+## Estrutura do Projeto
 
 ```text
 front-monorepo/
@@ -42,24 +80,24 @@ front-monorepo/
 └── pnpm-lock.yaml
 ```
 
-## 📦 Pacotes Disponíveis
+## Pacotes Disponíveis
 
-### 🔧 Configurações Compartilhadas
+### Configurações Compartilhadas
 
 -   **`@ns-tech/config-eslint`** - Configurações padronizadas do ESLint
 -   **`@ns-tech/config-prettier`** - Configurações padronizadas do Prettier
 -   **`@ns-tech/config-tsconfig`** - Configurações base do TypeScript
 
-### ⚛️ Pacotes React
+### Pacotes React
 
 -   **`@ns-tech/react-base`** - Hooks e utilitários base para React
 -   **`@ns-tech/ui`** - Sistema de design e componentes UI
 
-## 🧪 Aplicação de Teste (front-base-project)
+## Aplicação de Teste (front-base-project)
 
 O **front-base-project** é uma aplicação React moderna que serve como **ambiente de teste e demonstração** para os pacotes desenvolvidos.
 
-### 🚀 Stack Tecnológica
+### Stack Tecnológica
 
 -   **React 19** - Framework UI mais recente
 -   **TypeScript 5.7** - Tipagem estática
@@ -70,7 +108,7 @@ O **front-base-project** é uma aplicação React moderna que serve como **ambie
 -   **Vitest** - Framework de testes
 -   **Prettier** - Formatação de código
 
-### 🪝 Hooks Disponíveis (do pacote @ns-tech/react-base)
+### Hooks Disponíveis (do pacote @ns-tech/react-base)
 
 ```typescript
 // Hook para debounce de valores
@@ -82,7 +120,7 @@ import { useLocalStorage } from '@ns-tech/react-base';
 const [value, setValue] = useLocalStorage('key', defaultValue);
 ```
 
-### 📂 Exemplo de Uso Prático
+### Exemplo de Uso Prático
 
 ```tsx
 // src/routes/teste.tsx
@@ -118,15 +156,15 @@ function TesteComponent() {
 }
 ```
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
-### 📋 Gerenciamento
+### Gerenciamento
 
 -   **Node.js** + **pnpm** - Gerenciamento de pacotes e workspaces
 -   **Turbo** - Build system para monorepos
 -   **Changesets** - Versionamento e changelog
 
-### 🎯 Desenvolvimento
+### Desenvolvimento
 
 -   **TypeScript** - Linguagem principal
 -   **React 19** - Framework UI
@@ -134,20 +172,20 @@ function TesteComponent() {
 -   **Prettier** - Formatação de código
 -   **ESLint** - Linting de código
 
-### 🧪 Testes
+### Testes
 
 -   **Vitest** - Framework de testes
 -   **Testing Library** - Testes de componentes
 -   **jsdom** - Ambiente de testes
 
-## 📚 Como Usar
+## Como Usar
 
-### 🔧 Pré-requisitos
+### Pré-requisitos
 
 -   Node.js (versão 18+)
 -   pnpm (recomendado)
 
-### 📥 Instalação
+### Instalação
 
 ```bash
 # Clone o repositório
@@ -158,9 +196,9 @@ cd front-monorepo
 pnpm install
 ```
 
-### 🚀 Desenvolvimento
+### Desenvolvimento
 
-#### ▶️ Executar a aplicação de teste
+#### Executar a aplicação de teste
 
 ```bash
 # Navegar para o diretório da aplicação
@@ -174,7 +212,7 @@ pnpm start
 
 A aplicação estará disponível em `http://localhost:3000`
 
-#### 🔧 Trabalhar com pacotes
+#### Trabalhar com pacotes
 
 ```bash
 # Instalar dependências em todos os workspaces
@@ -188,7 +226,7 @@ pnpm --filter front-base-project test
 pnpm --filter front-base-project add '@ns-tech/react-base@workspace:*'
 ```
 
-### 🏗️ Build e Teste
+### Build e Teste
 
 ```bash
 # Build da aplicação de teste
@@ -208,9 +246,9 @@ pnpm format:check
 pnpm serve
 ```
 
-## 📋 Scripts Disponíveis
+## Scripts Disponíveis
 
-### 🧪 Aplicação (front-base-project)
+### Aplicação (front-base-project)
 
 -   `pnpm dev` - Inicia o servidor de desenvolvimento
 -   `pnpm start` - Alias para dev
@@ -220,7 +258,7 @@ pnpm serve
 -   `pnpm format` - Formata o código com Prettier
 -   `pnpm format:check` - Verifica a formatação
 
-## 🔧 Configuração dos Workspaces
+## Configuração dos Workspaces
 
 O projeto utiliza **pnpm workspaces** configurado no arquivo `pnpm-workspace.yaml`:
 
@@ -230,7 +268,7 @@ packages:
     - 'packages/*'
 ```
 
-### 🔗 Links de Workspace
+### Links de Workspace
 
 Os pacotes são linkados usando `workspace:*` para garantir que sempre usem a versão local:
 
@@ -246,7 +284,7 @@ Os pacotes são linkados usando `workspace:*` para garantir que sempre usem a ve
 }
 ```
 
-## 📈 Publicação de Pacotes
+## Publicação de Pacotes
 
 Todos os pacotes são configurados para publicação pública no NPM sob o escopo `@ns-tech/`:
 
@@ -258,7 +296,7 @@ Todos os pacotes são configurados para publicação pública no NPM sob o escop
 }
 ```
 
-### 📝 Versionamento
+### Versionamento
 
 O projeto utiliza **Changesets** para:
 
@@ -266,15 +304,15 @@ O projeto utiliza **Changesets** para:
 -   Gerar changelogs automáticos
 -   Coordenar publicações
 
-## 🔄 Fluxo de Trabalho
+## Fluxo de Trabalho
 
-### 1. 🔨 Desenvolvimento
+### 1. Desenvolvimento
 
 1. Desenvolva novos hooks/componentes nos pacotes
 2. Teste na aplicação `front-base-project`
 3. Valide com testes e formatação
 
-### 2. 🧪 Teste
+### 2. Teste
 
 ```bash
 # Navegar para o projeto de teste
@@ -288,7 +326,7 @@ pnpm add '@ns-tech/react-base@workspace:*'
 pnpm dev
 ```
 
-### 3. 📦 Publicação
+### 3. Publicação
 
 ```bash
 # Gerar changeset
@@ -301,7 +339,7 @@ pnpm changeset version
 pnpm changeset publish
 ```
 
-## 🤝 Contribuição
+## Contribuição
 
 1. Faça um fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
@@ -310,9 +348,9 @@ pnpm changeset publish
 5. Push para a branch (`git push origin feature/nova-feature`)
 6. Abra um Pull Request
 
-## 📝 Notas de Desenvolvimento
+## Notas de Desenvolvimento
 
-### ✅ Boas Práticas
+### Boas Práticas
 
 -   **Sempre teste os pacotes** na aplicação `front-base-project` antes de publicar
 -   **Use TypeScript** para garantir type safety
@@ -320,7 +358,7 @@ pnpm changeset publish
 -   **Documente** novos componentes e funcionalidades
 -   **Use workspace links** (`workspace:*`) para dependências internas
 
-### 🔄 Atualizando Pacotes
+### Atualizando Pacotes
 
 Quando modificar um pacote, atualize no projeto de teste:
 
@@ -330,7 +368,7 @@ pnpm remove @ns-tech/nome-do-pacote
 pnpm add '@ns-tech/nome-do-pacote@workspace:*' --save-dev
 ```
 
-## 📄 Licença
+## Licença
 
 Este projeto está sob licença ISC.
 

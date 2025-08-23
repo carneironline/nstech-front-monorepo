@@ -17,26 +17,32 @@ function App() {
           className='h-[40vmin] pointer-events-none animate-[spin_20s_linear_infinite]'
           alt='logo'
         />
-        <p>{t('welcome')}</p>
-        <p>
-          Edit <code>src/routes/index.tsx</code> and save to reload.
-        </p>
-        <a
-          className='text-[#61dafb] hover:underline'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-        <a
-          className='text-[#61dafb] hover:underline'
-          href='https://tanstack.com'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn TanStack
-        </a>
+
+        {/* INTERNACIONALIZAÇÃO */}
+        <section className='mt-4'>
+          <p>
+            {t('greeting', { name: 'Rodrigo' })} {t('welcome')}
+          </p>
+        </section>
+
+        <section className='flex flex-col gap-1 mt-8'>
+          <a
+            className='text-[#61dafb] hover:underline'
+            href='https://reactjs.org'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {t('learn')} React
+          </a>
+          <a
+            className='text-[#61dafb] hover:underline'
+            href='https://tanstack.com'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {t('learn')} TanStack
+          </a>
+        </section>
       </header>
     </div>
   )

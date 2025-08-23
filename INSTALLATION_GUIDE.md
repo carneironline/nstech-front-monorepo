@@ -240,7 +240,8 @@ src/
 {
     "welcome": "Bem-vindo ao dashboard",
     "greeting": "Olá, {{name}}!",
-    "switchLanguage": "Trocar idioma"
+    "learn": "Aprenda",
+    "button_switch_language": "Mudar idioma"
 }
 ```
 
@@ -250,7 +251,8 @@ src/
 {
     "welcome": "Welcome to the dashboard",
     "greeting": "Hello, {{name}}!",
-    "switchLanguage": "Switch language"
+    "learn": "Learn",
+    "button_switch_language": "Switch language"
 }
 ```
 
@@ -329,7 +331,7 @@ function MyComponent() {
         <div>
             <h1>{t('welcome')}</h1>
             <p>{t('greeting', { name: 'João' })}</p>
-            <button onClick={handleLanguageChange}>{t('switchLanguage')}</button>
+            <button onClick={handleLanguageChange}>{t('button_switch_language')}</button>
         </div>
     );
 }

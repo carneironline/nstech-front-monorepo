@@ -1,0 +1,4 @@
+{
+  "greeting": "Olá, {{name}}!",
+  "welcome": "Bem-vindo ao dashboard"
+}

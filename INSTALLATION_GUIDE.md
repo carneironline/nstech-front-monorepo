@@ -9,6 +9,7 @@ O monorepo NS-Tech contém os seguintes pacotes:
 -   **@ns-tech/config-eslint**: Configuração padronizada do ESLint para projetos React
 -   **@ns-tech/config-prettier**: Configuração padronizada do Prettier para formatação de código
 -   **@ns-tech/config-tsconfig**: Configuração base do TypeScript otimizada para projetos React modernos
+-   **@nstech/i18n**: Pacote de internacionalização com i18next para aplicações React
 -   **@ns-tech/react-base**: Biblioteca de hooks React utilitários
 -   **@ns-tech/ui**: Sistema de design de componentes UI (em desenvolvimento)
 
@@ -207,7 +208,202 @@ npm install typescript --save-dev
 
 ---
 
-## 4. @ns-tech/react-base
+## 4. @nstech/i18n
+
+### Instalação do Pacote de Internacionalização
+
+```bash
+npm install @nstech/i18n i18next react-i18next
+# ou
+yarn add @nstech/i18n i18next react-i18next
+# ou
+pnpm add @nstech/i18n i18next react-i18next
+```
+
+### Configuração Básica
+
+#### 1. Criar arquivos de tradução
+
+```
+src/
+├── locales/
+│   ├── pt-BR/
+│   │   └── common.json
+│   └── en/
+│       └── common.json
+└── i18n.ts
+```
+
+**src/locales/pt-BR/common.json:**
+
+```json
+{
+    "welcome": "Bem-vindo ao dashboard",
+    "greeting": "Olá, {{name}}!",
+    "switchLanguage": "Trocar idioma"
+}
+```
+
+**src/locales/en/common.json:**
+
+```json
+{
+    "welcome": "Welcome to the dashboard",
+    "greeting": "Hello, {{name}}!",
+    "switchLanguage": "Switch language"
+}
+```
+
+#### 2. Configurar instância i18n
+
+**src/i18n.ts:**
+
+```typescript
+import { initI18n } from '@nstech/i18n';
+import pt from './locales/pt-BR/common.json';
+import en from './locales/en/common.json';
+
+export const i18nInstance = initI18n(
+    {
+        'pt-BR': { translation: pt },
+        en: { translation: en },
+    },
+    'pt-BR' // idioma padrão
+);
+```
+
+#### 3. Configurar Provider na aplicação
+
+**src/main.tsx (React com Vite):**
+
+```tsx
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
+import { I18nProvider } from '@nstech/i18n';
+import { i18nInstance } from './i18n';
+import App from './App';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+        <I18nProvider i18nInstance={i18nInstance}>
+            <App />
+        </I18nProvider>
+    </StrictMode>
+);
+```
+
+**src/index.tsx (Create React App):**
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { I18nProvider } from '@nstech/i18n';
+import { i18nInstance } from './i18n';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+    <React.StrictMode>
+        <I18nProvider i18nInstance={i18nInstance}>
+            <App />
+        </I18nProvider>
+    </React.StrictMode>
+);
+```
+
+### Uso nos Componentes
+
+#### Hook useTranslation
+
+```tsx
+import { useTranslation } from '@nstech/i18n';
+
+function MyComponent() {
+    const { t, i18n } = useTranslation();
+
+    const handleLanguageChange = () => {
+        i18n.changeLanguage(i18n.language === 'en' ? 'pt-BR' : 'en');
+    };
+
+    return (
+        <div>
+            <h1>{t('welcome')}</h1>
+            <p>{t('greeting', { name: 'João' })}</p>
+            <button onClick={handleLanguageChange}>{t('switchLanguage')}</button>
+        </div>
+    );
+}
+```
+
+#### Componente de Seletor de Idiomas
+
+```tsx
+import { useTranslation } from '@nstech/i18n';
+
+function LanguageSelector() {
+    const { i18n } = useTranslation();
+
+    const languages = [
+        { code: 'pt-BR', name: 'Português' },
+        { code: 'en', name: 'English' },
+    ];
+
+    return (
+        <select value={i18n.language} onChange={(e) => i18n.changeLanguage(e.target.value)}>
+            {languages.map((lang) => (
+                <option key={lang.code} value={lang.code}>
+                    {lang.name}
+                </option>
+            ))}
+        </select>
+    );
+}
+```
+
+### Configuração com Múltiplos Namespaces
+
+```typescript
+// src/i18n.ts
+import { initI18n } from '@nstech/i18n';
+import commonPt from './locales/pt-BR/common.json';
+import commonEn from './locales/en/common.json';
+import errorsPt from './locales/pt-BR/errors.json';
+import errorsEn from './locales/en/errors.json';
+
+export const i18nInstance = initI18n(
+    {
+        'pt-BR': {
+            common: commonPt,
+            errors: errorsPt,
+        },
+        en: {
+            common: commonEn,
+            errors: errorsEn,
+        },
+    },
+    'pt-BR'
+);
+```
+
+```tsx
+// Uso com namespace específico
+const { t } = useTranslation('errors');
+const errorMessage = t('invalidCredentials');
+```
+
+### Recursos Disponíveis
+
+-   ✅ Configuração simplificada do i18next
+-   ✅ Provider React para contexto de i18n
+-   ✅ Todos os hooks do react-i18next disponíveis
+-   ✅ Suporte a interpolação de variáveis
+-   ✅ Suporte a múltiplos namespaces
+-   ✅ TypeScript incluído
+-   ✅ Detecção automática de idioma do navegador (configurável)
+
+---
+
+## 5. @ns-tech/react-base
 
 ### Instalação do React Base
 
@@ -284,7 +480,7 @@ function SettingsComponent() {
 
 ---
 
-## 5. @ns-tech/ui (Em Desenvolvimento)
+## 6. @ns-tech/ui (Em Desenvolvimento)
 
 ### Instalação do UI Design System
 

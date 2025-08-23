@@ -65,7 +65,9 @@ front-monorepo/
 │       ├── src/
 │       │   ├── components/          # Componentes React
 │       │   ├── routes/              # Rotas do TanStack Router
-│       │   └── integrations/        # Integrações (TanStack Query)
+│       │   ├── locales/             # Arquivos de tradução (PT-BR/EN)
+│       │   ├── integrations/        # Integrações (TanStack Query)
+│       │   └── i18n.ts              # Configuração de internacionalização
 │       ├── .prettierrc.json         # Configuração Prettier (usa pacote)
 │       ├── tsconfig.json            # Configuração TypeScript (estende pacote)
 │       └── package.json
@@ -73,6 +75,7 @@ front-monorepo/
 │   ├── config-eslint/               # 📋 Configurações ESLint compartilhadas
 │   ├── config-prettier/             # 🎨 Configurações Prettier compartilhadas
 │   ├── config-tsconfig/             # ⚙️ Configurações TypeScript compartilhadas
+│   ├── i18n/                        # 🌐 Pacote de internacionalização
 │   ├── react-base/                  # 🪝 Hooks e utilitários base para React
 │   └── ui-design-system/            # 🎨 Sistema de design UI
 ├── package.json
@@ -91,6 +94,7 @@ front-monorepo/
 ### Pacotes React
 
 -   **`@ns-tech/react-base`** - Hooks e utilitários base para React
+-   **`@nstech/i18n`** - Pacote de internacionalização com i18next
 -   **`@ns-tech/ui`** - Sistema de design e componentes UI
 
 ## Aplicação de Teste (front-base-project)
@@ -118,6 +122,21 @@ const debouncedValue = useDebounce(value, 500);
 // Hook para localStorage
 import { useLocalStorage } from '@ns-tech/react-base';
 const [value, setValue] = useLocalStorage('key', defaultValue);
+```
+
+### Internacionalização (do pacote @nstech/i18n)
+
+```typescript
+// Hook para traduções
+import { useTranslation } from '@nstech/i18n';
+const { t, i18n } = useTranslation();
+
+// Usar traduções
+const title = t('welcome');
+const greeting = t('greeting', { name: 'João' });
+
+// Trocar idioma
+i18n.changeLanguage('en');
 ```
 
 ### Exemplo de Uso Prático

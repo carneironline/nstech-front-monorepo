@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import logo from '../logo.svg'
-import { useTranslation } from '@nstech/i18n'
+import { useTranslation } from '../../../../packages/config-i18n'
 
 export const Route = createFileRoute('/')({
   component: App,

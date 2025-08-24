@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { I18nProvider } from '@nstech/i18n'
+import { I18nProvider } from '../../../packages/config-i18n/index.ts'
 import { i18nInstance } from './i18n'
 
 import * as TanStackQueryProvider from './integrations/tanstack-query/root-provider.tsx'
@@ -40,9 +40,9 @@ if (rootElement && !rootElement.innerHTML) {
   root.render(
     <StrictMode>
       <I18nProvider i18nInstance={i18nInstance}>
-      <TanStackQueryProvider.Provider {...TanStackQueryProviderContext}>
-        <RouterProvider router={router} />
-      </TanStackQueryProvider.Provider>
+        <TanStackQueryProvider.Provider {...TanStackQueryProviderContext}>
+          <RouterProvider router={router} />
+        </TanStackQueryProvider.Provider>
       </I18nProvider>
     </StrictMode>,
   )

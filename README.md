@@ -85,6 +85,8 @@ front-monorepo/
 
 ## Pacotes Disponíveis
 
+> 📋 **Para instruções detalhadas de instalação e configuração de cada pacote, consulte o [Guia de Instalação dos Pacotes](./INSTALLATION_GUIDE.md)**
+
 ### Configurações Compartilhadas
 
 -   **`@ns-tech/config-eslint`** - Configurações padronizadas do ESLint

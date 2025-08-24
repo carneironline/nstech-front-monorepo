@@ -1,4 +1,4 @@
-import { initI18n } from '@nstech/i18n'
+import { initI18n } from '../../../packages/config-i18n'
 import pt from './locales/pt-BR/common.json'
 import en from './locales/en/common.json'
 

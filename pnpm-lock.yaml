@@ -60,9 +60,9 @@ importers:
       '@ns-tech/config-tsconfig':
         specifier: workspace:*
         version: link:../../packages/config-tsconfig
-      '@nstech/i18n':
+      '@nstech/config-i18n':
         specifier: workspace:*
-        version: link:../../packages/i18n
+        version: link:../../packages/config-i18n
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.1
@@ -130,15 +130,7 @@ importers:
         specifier: ^0.4.20
         version: 0.4.20(eslint@9.33.0(jiti@2.5.1))
 
-  packages/config-prettier:
-    devDependencies:
-      '@trivago/prettier-plugin-sort-imports':
-        specifier: ^5.2.2
-        version: 5.2.2(prettier@3.6.2)
-
-  packages/config-tsconfig: {}
-
-  packages/i18n:
+  packages/config-i18n:
     dependencies:
       i18next:
         specifier: ^23.4.0
@@ -153,6 +145,10 @@ importers:
       '@types/react':
         specifier: ^19.1.10
         version: 19.1.10
+
+  packages/config-prettier: {}
+
+  packages/config-tsconfig: {}
 
   packages/react-base:
     dependencies:
@@ -981,22 +977,6 @@ packages:
       '@types/react':
         optional: true
       '@types/react-dom':
-        optional: true
-
-  '@trivago/prettier-plugin-sort-imports@5.2.2':
-    resolution: {integrity: sha512-fYDQA9e6yTNmA13TLVSA+WMQRc5Bn/c0EUBditUHNfMMxN7M82c38b1kEggVE3pLpZ0FwkwJkUEKMiOi52JXFA==}
-    engines: {node: '>18.12'}
-    peerDependencies:
-      '@vue/compiler-sfc': 3.x
-      prettier: 2.x - 3.x
-      prettier-plugin-svelte: 3.x
-      svelte: 4.x || 5.x
-    peerDependenciesMeta:
-      '@vue/compiler-sfc':
-        optional: true
-      prettier-plugin-svelte:
-        optional: true
-      svelte:
         optional: true
 
   '@tybys/wasm-util@0.10.0':
@@ -2093,9 +2073,6 @@ packages:
     resolution: {integrity: sha512-H0dkQoCa3b2VEeKQBOxFph+JAbcrQdE7KC0UkqwpLmv2EC4P41QXP+rqo9wYodACiG5/WM5s9oDApTU8utwj9g==}
     engines: {node: '>= 0.4'}
 
-  javascript-natural-sort@0.7.1:
-    resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
-
   jiti@2.5.1:
     resolution: {integrity: sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w==}
     hasBin: true
@@ -2244,9 +2221,6 @@ packages:
 
   lodash.startcase@4.4.0:
     resolution: {integrity: sha512-+WKqsK294HMSc2jEbNgpHpd0JfIBhp7rEV4aqXWqFr6AlXov+SlcgB1Fv01y2kGe3Gc8nMW7VA0SrGuSkRfIEg==}
-
-  lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
@@ -3942,18 +3916,6 @@ snapshots:
       '@types/react': 19.1.9
       '@types/react-dom': 19.1.7(@types/react@19.1.9)
 
-  '@trivago/prettier-plugin-sort-imports@5.2.2(prettier@3.6.2)':
-    dependencies:
-      '@babel/generator': 7.28.0
-      '@babel/parser': 7.28.0
-      '@babel/traverse': 7.28.0
-      '@babel/types': 7.28.2
-      javascript-natural-sort: 0.7.1
-      lodash: 4.17.21
-      prettier: 3.6.2
-    transitivePeerDependencies:
-      - supports-color
-
   '@tybys/wasm-util@0.10.0':
     dependencies:
       tslib: 2.8.1
@@ -5254,8 +5216,6 @@ snapshots:
       has-symbols: 1.1.0
       set-function-name: 2.0.2
 
-  javascript-natural-sort@0.7.1: {}
-
   jiti@2.5.1: {}
 
   js-tokens@4.0.0: {}
@@ -5394,8 +5354,6 @@ snapshots:
   lodash.merge@4.6.2: {}
 
   lodash.startcase@4.4.0: {}
-
-  lodash@4.17.21: {}
 
   loose-envify@1.4.0:
     dependencies:

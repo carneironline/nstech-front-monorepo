@@ -24,6 +24,7 @@
     "tailwindcss": "^4.0.6"
   },
   "devDependencies": {
+    "@ns-tech/config-eslint": "workspace:*",
     "@ns-tech/config-prettier": "workspace:*",
     "@ns-tech/config-tsconfig": "workspace:*",
     "@nstech/config-i18n": "workspace:*",

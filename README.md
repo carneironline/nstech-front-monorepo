@@ -97,7 +97,7 @@ front-monorepo/
 
 -   **`@ns-tech/react-base`** - Hooks e utilitários base para React
 -   **`@ns-tech/config-i18n`** - Pacote de internacionalização com i18next
--   **`@ns-tech/ui`** - Sistema de design e componentes UI
+-   **`@ns-tech/ui-design-system`** - Sistema de design e componentes UI _(em desenvolvimento)_
 
 ## Aplicação de Teste (front-base-project)
 

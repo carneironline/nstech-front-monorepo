@@ -1,5 +1,13 @@
 # Guia de Instalação dos Pacotes NS-Tech
 
+-   **@ns-tech/config-eslint**: Configuração padronizada do ESLint para projetos React
+
+-   **@ns-tech/config-prettier**: Configuração padronizada do Prettier para formatação de código
+-   **@ns-tech/config-tsconfig**: Configuração base do TypeScript otimizada para projetos React modernos
+-   **@ns-tech/config-i18n**: Pacote de internacionalização com i18next para aplicações React
+-   **@ns-tech/react-base**: Biblioteca de hooks React utilitários
+-   **@ns-tech/ui-design-system**: Sistema de design de componentes UI _(em desenvolvimento)_
+
 Este documento fornece instruções detalhadas sobre como instalar e configurar cada pacote do monorepo NS-Tech em projetos externos.
 
 ## Visão Geral dos Pacotes
@@ -8,12 +16,7 @@ O monorepo NS-Tech contém os seguintes pacotes:
 
 -   **@ns-tech/config-eslint**: Configuração padronizada do ESLint para projetos React
 -   **@ns-tech/config-prettier**: Configuração padronizada do Prettier para formatação de código
--   **@ns-tech/config-tsconfig**: Configuração base do TypeScript otimizada para projetos React modernos
--   **@ns-tech/config-i18n**: Pacote de internacionalização com i18next para aplicações React
--   **@ns-tech/react-base**: Biblioteca de hooks React utilitários
--   **@ns-tech/ui**: Sistema de design de componentes UI (em desenvolvimento)
-
----
+-   **@ns-tech/config-tsconfig**: Configuração b## 6. @ns-tech/ui-design-system
 
 ## 1. @ns-tech/config-eslint
 
@@ -482,25 +485,38 @@ function SettingsComponent() {
 
 ---
 
-## 6. @ns-tech/ui (Em Desenvolvimento)
+## 6. @ns-tech/ui-design-system (Em Desenvolvimento)
 
-### Instalação do UI Design System
+### Status do Pacote
 
-```bash
-npm install @ns-tech/ui
-# ou
-yarn add @ns-tech/ui
-# ou
-pnpm add @ns-tech/ui
+```
+⚠️  ATENÇÃO: Este pacote está atualmente em desenvolvimento ativo.
+📦 Não está disponível para instalação externa ainda.
+🚧 A documentação abaixo serve como referência futura.
 ```
 
-### Dependências do UI
+### Instalação (Disponível em breve)
 
 ```bash
-npm install react clsx
+# Estará disponível em breve
+npm install @ns-tech/ui-design-system
+# ou
+yarn add @ns-tech/ui-design-system
+# ou
+pnpm add @ns-tech/ui-design-system
 ```
 
-**Nota**: Este pacote está atualmente em desenvolvimento e não possui componentes implementados ainda.
+### Dependências (Futuras)
+
+```bash
+npm install react react-dom
+# Para estilos (escolha uma opção quando disponível)
+npm install tailwindcss  # ou
+npm install styled-components  # ou
+npm install @emotion/react
+```
+
+**Nota**: Este pacote está sendo desenvolvido e não possui componentes implementados ainda. A documentação completa estará disponível quando o pacote for lançado.
 
 ---
 
@@ -510,7 +526,7 @@ npm install react clsx
 
 ```bash
 # Dependências de produção
-npm install @ns-tech/react-base @ns-tech/ui
+npm install @ns-tech/react-base
 
 # Dependências de desenvolvimento
 npm install @ns-tech/config-eslint @ns-tech/config-prettier @ns-tech/config-tsconfig --save-dev
@@ -654,13 +670,13 @@ export function SearchExample({ onSearch }: SearchExampleProps) {
 ### Verificar Versões
 
 ```bash
-npm list @ns-tech/config-eslint @ns-tech/config-prettier @ns-tech/config-tsconfig @ns-tech/react-base @ns-tech/ui
+npm list @ns-tech/config-eslint @ns-tech/config-prettier @ns-tech/config-tsconfig @ns-tech/react-base
 ```
 
 ### Atualizar Pacotes
 
 ```bash
-npm update @ns-tech/config-eslint @ns-tech/config-prettier @ns-tech/config-tsconfig @ns-tech/react-base @ns-tech/ui
+npm update @ns-tech/config-eslint @ns-tech/config-prettier @ns-tech/config-tsconfig @ns-tech/react-base
 ```
 
 ---

@@ -75,7 +75,7 @@ front-monorepo/
 │   ├── config-eslint/               # 📋 Configurações ESLint compartilhadas
 │   ├── config-prettier/             # 🎨 Configurações Prettier compartilhadas
 │   ├── config-tsconfig/             # ⚙️ Configurações TypeScript compartilhadas
-│   ├── i18n/                        # 🌐 Pacote de internacionalização
+│   ├── config-i18n/                 # 🌐 Pacote de internacionalização
 │   ├── react-base/                  # 🪝 Hooks e utilitários base para React
 │   └── ui-design-system/            # 🎨 Sistema de design UI
 ├── package.json
@@ -96,7 +96,7 @@ front-monorepo/
 ### Pacotes React
 
 -   **`@ns-tech/react-base`** - Hooks e utilitários base para React
--   **`@nstech/i18n`** - Pacote de internacionalização com i18next
+-   **`@nstech/config-i18n`** - Pacote de internacionalização com i18next
 -   **`@ns-tech/ui`** - Sistema de design e componentes UI
 
 ## Aplicação de Teste (front-base-project)
@@ -126,11 +126,11 @@ import { useLocalStorage } from '@ns-tech/react-base';
 const [value, setValue] = useLocalStorage('key', defaultValue);
 ```
 
-### Internacionalização (do pacote @nstech/i18n)
+### Internacionalização (do pacote @nstech/config-i18n)
 
 ```typescript
 // Hook para traduções
-import { useTranslation } from '@nstech/i18n';
+import { useTranslation } from '@nstech/config-i18n';
 const { t, i18n } = useTranslation();
 
 // Usar traduções

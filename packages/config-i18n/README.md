@@ -1,4 +1,4 @@
-# @nstech/config-i18n
+# @ns-tech/config-i18n
 
 Pacote de internacionalização reutilizável para aplicações React baseado no i18next. Fornece uma API simplificada para configurar e usar internacionalização em qualquer aplicação React do monorepo.
 
@@ -14,10 +14,10 @@ Pacote de internacionalização reutilizável para aplicações React baseado no
 
 ```bash
 # No monorepo
-pnpm add '@nstech/config-i18n@workspace:*' --save-dev
+pnpm add '@ns-tech/config-i18n@workspace:*' --save-dev
 
 # Projeto externo (quando publicado)
-npm install @nstech/config-i18n
+npm install @ns-tech/config-i18n
 ```
 
 ## Dependências
@@ -34,7 +34,7 @@ npm install i18next react-i18next
 
 ```typescript
 // src/i18n.ts
-import { initI18n } from '@nstech/config-i18n';
+import { initI18n } from '@ns-tech/config-i18n';
 import pt from './locales/pt-BR/common.json';
 import en from './locales/en/common.json';
 
@@ -53,7 +53,7 @@ export const i18nInstance = initI18n(
 // src/main.tsx
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { I18nProvider } from '@nstech/config-i18n';
+import { I18nProvider } from '@ns-tech/config-i18n';
 import { i18nInstance } from './i18n';
 import App from './App';
 
@@ -70,7 +70,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ```tsx
 // src/components/MyComponent.tsx
-import { useTranslation } from '@nstech/config-i18n';
+import { useTranslation } from '@ns-tech/config-i18n';
 
 export function MyComponent() {
     const { t, i18n } = useTranslation();
@@ -158,7 +158,7 @@ O pacote exporta todos os hooks do `react-i18next`:
 
 ```typescript
 // src/i18n.ts
-import { initI18n } from '@nstech/config-i18n';
+import { initI18n } from '@ns-tech/config-i18n';
 import commonPt from './locales/pt-BR/common.json';
 import commonEn from './locales/en/common.json';
 import errorsPt from './locales/pt-BR/errors.json';
@@ -191,7 +191,7 @@ const errorMessage = t('invalidCredentials');
 ### Botão para trocar idioma
 
 ```tsx
-import { useTranslation } from '@nstech/config-i18n';
+import { useTranslation } from '@ns-tech/config-i18n';
 
 export function LanguageSwitcher() {
     const { i18n } = useTranslation();
@@ -208,7 +208,7 @@ export function LanguageSwitcher() {
 ### Componente com interpolação
 
 ```tsx
-import { useTranslation } from '@nstech/config-i18n';
+import { useTranslation } from '@ns-tech/config-i18n';
 
 export function UserGreeting({ userName }: { userName: string }) {
     const { t } = useTranslation();

@@ -57,15 +57,15 @@ importers:
       '@ns-tech/config-eslint':
         specifier: workspace:*
         version: link:../../packages/config-eslint
+      '@ns-tech/config-i18n':
+        specifier: workspace:*
+        version: link:../../packages/config-i18n
       '@ns-tech/config-prettier':
         specifier: workspace:*
         version: link:../../packages/config-prettier
       '@ns-tech/config-tsconfig':
         specifier: workspace:*
         version: link:../../packages/config-tsconfig
-      '@nstech/config-i18n':
-        specifier: workspace:*
-        version: link:../../packages/config-i18n
       '@testing-library/dom':
         specifier: ^10.4.0
         version: 10.4.1

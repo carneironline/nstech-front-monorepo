@@ -27,7 +27,7 @@
     "@ns-tech/config-eslint": "workspace:*",
     "@ns-tech/config-prettier": "workspace:*",
     "@ns-tech/config-tsconfig": "workspace:*",
-    "@nstech/config-i18n": "workspace:*",
+    "@ns-tech/config-i18n": "workspace:*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
     "@types/react": "^19.0.8",

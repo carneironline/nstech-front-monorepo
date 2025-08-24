@@ -9,7 +9,7 @@ O monorepo NS-Tech contém os seguintes pacotes:
 -   **@ns-tech/config-eslint**: Configuração padronizada do ESLint para projetos React
 -   **@ns-tech/config-prettier**: Configuração padronizada do Prettier para formatação de código
 -   **@ns-tech/config-tsconfig**: Configuração base do TypeScript otimizada para projetos React modernos
--   **@nstech/config-i18n**: Pacote de internacionalização com i18next para aplicações React
+-   **@ns-tech/config-i18n**: Pacote de internacionalização com i18next para aplicações React
 -   **@ns-tech/react-base**: Biblioteca de hooks React utilitários
 -   **@ns-tech/ui**: Sistema de design de componentes UI (em desenvolvimento)
 
@@ -208,16 +208,16 @@ npm install typescript --save-dev
 
 ---
 
-## 4. @nstech/config-i18n
+## 4. @ns-tech/config-i18n
 
 ### Instalação do Pacote de Internacionalização
 
 ```bash
-npm install @nstech/config-i18n i18next react-i18next
+npm install @ns-tech/config-i18n i18next react-i18next
 # ou
-yarn add @nstech/config-i18n i18next react-i18next
+yarn add @ns-tech/config-i18n i18next react-i18next
 # ou
-pnpm add @nstech/config-i18n i18next react-i18next
+pnpm add @ns-tech/config-i18n i18next react-i18next
 ```
 
 ### Configuração Básica
@@ -261,7 +261,7 @@ src/
 **src/i18n.ts:**
 
 ```typescript
-import { initI18n } from '@nstech/config-i18n';
+import { initI18n } from '@ns-tech/config-i18n';
 import pt from './locales/pt-BR/common.json';
 import en from './locales/en/common.json';
 
@@ -281,7 +281,7 @@ export const i18nInstance = initI18n(
 ```tsx
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import { I18nProvider } from '@nstech/config-i18n';
+import { I18nProvider } from '@ns-tech/config-i18n';
 import { i18nInstance } from './i18n';
 import App from './App';
 
@@ -299,7 +299,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 ```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { I18nProvider } from '@nstech/config-i18n';
+import { I18nProvider } from '@ns-tech/config-i18n';
 import { i18nInstance } from './i18n';
 import App from './App';
 
@@ -318,7 +318,7 @@ root.render(
 #### Hook useTranslation
 
 ```tsx
-import { useTranslation } from '@nstech/config-i18n';
+import { useTranslation } from '@ns-tech/config-i18n';
 
 function MyComponent() {
     const { t, i18n } = useTranslation();
@@ -340,7 +340,7 @@ function MyComponent() {
 #### Componente de Seletor de Idiomas
 
 ```tsx
-import { useTranslation } from '@nstech/config-i18n';
+import { useTranslation } from '@ns-tech/config-i18n';
 
 function LanguageSelector() {
     const { i18n } = useTranslation();
@@ -366,7 +366,7 @@ function LanguageSelector() {
 
 ```typescript
 // src/i18n.ts
-import { initI18n } from '@nstech/config-i18n';
+import { initI18n } from '@ns-tech/config-i18n';
 import commonPt from './locales/pt-BR/common.json';
 import commonEn from './locales/en/common.json';
 import errorsPt from './locales/pt-BR/errors.json';

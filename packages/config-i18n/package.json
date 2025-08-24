@@ -1,6 +1,6 @@
 {
-    "name": "@nstech/config-i18n",
-    "version": "1.0.0",
+    "name": "@ns-tech/config-i18n",
+    "version": "2.0.0",
     "main": "index.js",
     "types": "index.d.ts",
     "publishConfig": {

@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { BtnSwitchLang } from './BtnSwitchLang'
+import { BtnSwitchLang } from '@/components/BtnSwitchLang'
 
 export default function Header() {
   return (
